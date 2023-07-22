@@ -1,0 +1,114 @@
+[
+  {
+    "model": "ccforms.OpenQ",
+    "pk": 1,
+    "fields": {
+      "question_text": "Hoe zou je de algemene sfeer en cultuur op onze werkplek omschrijven?",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.OpenQ",
+    "pk": 2,
+    "fields": {
+      "question_text": "Welke aspecten van onze werkomgeving dragen het meest bij aan jouw productiviteit en welzijn?",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.OpenQ",
+    "pk": 3,
+    "fields": {
+      "question_text": "Zijn er specifieke gebieden waar je denkt dat we verbeteringen kunnen aanbrengen qua onze fysieke werkruimte of kantoorinrichting?",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.OpenQ",
+    "pk": 4,
+    "fields": {
+      "question_text": "Hoe zou je de mate van samenwerking en communicatie binnen jouw team en tussen verschillende afdelingen beoordelen?",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.OpenQ",
+    "pk": 5,
+    "fields": {
+      "question_text": "Op welke manieren denk je dat we de balans tussen werk en privéleven kunnen verbeteren voor onze teamleden?",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.OpenQ",
+    "pk": 6,
+    "fields": {
+      "question_text": "Voel je je voldoende ondersteund qua middelen, tools en apparatuur die nodig zijn om je werk effectief uit te voeren?",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.OpenQ",
+    "pk": 7,
+    "fields": {
+      "question_text": "Zijn er specifieke beleidsregels of procedures die volgens jou kunnen worden aangepast of verbeterd om een betere werkomgeving te creëren?",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.OpenQ",
+    "pk": 8,
+    "fields": {
+      "question_text": "Hoe zou je de mate van erkenning en waardering voor jouw bijdragen binnen de organisatie omschrijven?",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.OpenQ",
+    "pk": 9,
+    "fields": {
+      "question_text": "Zijn er specifieke uitdagingen of obstakels met betrekking tot jouw werkomgeving of werkomstandigheden die je graag wilt bespreken?",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.OpenQ",
+    "pk": 10,
+    "fields": {
+      "question_text": "Welke suggesties of aanbevelingen heb je om een meer inclusieve en diverse werkomgeving te creëren?",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.OpenQ",
+    "pk": 11,
+    "fields": {
+      "question_text": "Welke initiatieven of programma's zou je voorstellen om de professionele ontwikkeling van medewerkers te bevorderen?",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.OpenQ",
+    "pk": 12,
+    "fields": {
+      "question_text": "Hoe zou je de transparantie en communicatie van bedrijfsdoelen en besluitvormingsprocessen beoordelen?",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.OpenQ",
+    "pk": 13,
+    "fields": {
+      "question_text": "Op welke manieren denk je dat we de teambuilding en samenwerking tussen collega's kunnen versterken?",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.OpenQ",
+    "pk": 14,
+    "fields": {
+      "question_text": "Zijn er bepaalde trainingen, workshops of educatieve mogelijkheden waarvan je denkt dat ze waardevol zouden zijn voor de medewerkers?",
+      "is_hidden": false
+    }
+  }
+]

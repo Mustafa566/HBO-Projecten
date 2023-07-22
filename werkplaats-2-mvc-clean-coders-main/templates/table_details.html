@@ -1,0 +1,167 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <main class="author">
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Vraag</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Afsluiten</button>
+                        <button type="button" class="btn btn-primary save_btn">Opslaan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content" id="authors">
+            <div class="filter">
+                {% if table_name == 'auteurs' %}
+                    <h1>Auteurs</h1>
+                {% elif table_name == 'leerdoelen' %}
+                    <h1 class="mb-4">Leerdoelen</h1>
+                {% endif %}
+                {% if table_name == 'auteurs' %}
+                    <button class="btnFilter" onclick="birthFilter()">Geboortedatum</button>
+                    <button class="terugFilter">alles</button>
+                {% endif %}
+            </div>
+            <div id="orgResults">
+                <table>
+                    <thead>
+                    <tr>
+                        {% for column in columns %}
+                            <th>
+                                {{ column |
+                                replace("voornaam", "auteur") }}
+                            </th>
+                        {% endfor %}
+                        <th>Wijzigen</th>
+                        <th>Verwijderen</th>
+                        <th>Antwoorden</th>
+                    </tr>
+
+                    </thead>
+                    <tbody>
+                    {% for row in rows %}
+                        <tr>
+                            {% for field in row %}
+                                <td>
+                                    {{ field |
+                                replace("<br>", "") |
+                                replace("<tr>", "") |
+                                replace("</tr>", "") |
+                                replace("<td>", "") |
+                                replace("</td>", "") |
+                                replace("</table>", "") |
+                                replace("&nbsp;", "") |
+                                replace('<td valign="top">', "") |
+                                replace('<table bordercolor="black" cellspacing="0" cellpadding="0" width="75%" border="1">', "") |
+                                replace('<table bordercolor="black" cellspacing="0" cellpadding="0" width="75%" align="center" border="1"></table>', "") |
+                                replace('<table bordercolor="black" cellspacing="0" cellpadding="0" width="75%" align="center" border="1">', "") |
+                                replace('<script>alert("I CANT BELIeve THIS WORKS");</script>', "") }}
+                                </td>
+                            {% endfor %}
+                            <td>
+                                <form action="" method="GET" class="btnModal">
+                                    <input class="rowId" type="text" style="display: none" value="{{ row[0] }}">
+
+                                    <button type="button" class="updateButton" data-toggle="modal"
+                                            data-target="#exampleModal">Wijzigen
+                                    </button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="" method="GET" class="btnDeleteForm" data-id="{{ row[0] }}">
+                                    <input class="deleteBtnId" type="text" style="display: none" value="{{ row[0] }}">
+
+                                    <button type="button" class="removeButton"
+                                            data-target="#exampleModal">Verwijderen
+                                    </button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="" method="GET" class="btnAnswer">
+                                    <input class="rowId" type="text" style="display: none" value="{{ row[0] }}">
+
+                                    <button type="button" class="btn-success answer answerButton">
+                                        Antwoord
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div id="filterSearch" style="display:none;" class="filter">
+                <table>
+                    <thead>
+                    <tr>
+                        {% for column in columns %}
+                            <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                    </thead>
+                    <tbody id="results">
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}
+
+{% block templates %}
+    <script id="filterTemplate" class="filter">
+        <tr>
+            <tr>
+                <td>
+                    @id
+                </td>
+                <td>
+                    @voornaam
+                </td>
+                <td>
+                    @achternaam
+                </td>
+                <td>
+                    @geboortejaar
+                </td>
+                <td>
+                    @medewerker
+                </td>
+                <td>
+                    @met_pensioen
+                </td>
+
+            </tr>
+        </tr>
+    </script>
+
+    <script id="getAuthorTemplate">
+        <input type="text" style="display: None" class="rowId" value="@id"/>
+        <label for="vraag">Auteur</label>
+        <input style="width: 100%" type="text" class="auteur" id="vraag" value="@auteur">
+        <label for="vraag">Achternaam</label>
+        <input style="width: 100%" type="text" class="achternaam" id="vraag" value="@achternaam">
+        <label for="vraag">Geboortejaar</label>
+        <input style="width: 100%" type="text" class="geboortejaar" id="vraag" value="@geboortejaar">
+        <label for="vraag">Medewerker</label>
+        <input style="width: 100%" type="text" class="medewerker" id="vraag" value="@medewerker">
+        <label for="vraag">Met pensioen	</label>
+        <input style="width: 100%" type="text" class="pensioen" id="vraag" value="@metpensioen">
+    </script>
+{% endblock %}

@@ -1,0 +1,57 @@
+.header, .content {
+    background: linear-gradient(to right, #1E3B70, #29539B);
+}
+
+.filterDiv {
+    background-image: linear-gradient(to right, #B8D3FE, #AECAD6);
+    border-radius: 30px;
+    padding: 0px 20px;
+}
+
+#orgResults, #resultsSearch, .filter {
+    padding: 20px;
+    border-radius: 30px;
+    background-image: linear-gradient(to right, #B8D3FE, #AECAD6);
+    margin-top: 20px;
+}
+
+.navigation {
+    background-image: linear-gradient(to right, #B8D3FE, #AECAD6);
+    padding: 10px !important;
+    border-radius: 30px;
+}
+
+.logout {
+    font-size: 25px;
+    color: black;
+}
+
+.logoutLi {
+    margin-top: -10px;
+    margin-right: 20px;
+}
+
+.username {
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.answerButton {
+    background-image: linear-gradient(#42cf3e, #34da8f);
+}
+
+.removeButton {
+    background-image: linear-gradient(#A71D31, #e2616e);
+}
+
+.updateButton {
+    background-image: linear-gradient(#1E3B70, #29539B);
+}
+
+.addQuestion {
+    background-image: linear-gradient(#0BAB64, #3BB78F);
+}
+
+.editButton{
+    background-image: linear-gradient(#1E3B70, #29539B);
+}

@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block style %}
+
+<style>
+		
+</style>
+{% endblock style %}
+
+{% block content %}
+{% if user.is_authenticated and attendance.active %}
+
+<h1 class="text-center">Aanwezigheid</h1>
+<!-- Include the qrcode.js script -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<div class="container">
+    <h1 class="mb-4">{{ attendance.pk }}</h1>
+    <h2 class="mb-4">{{ attendance.title }}</h2>
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">{{ attendance.teacher }}</p>
+            <p class="lead">{{ attendance.course }}</p>
+            <p class="lead">{{ attendance.classe }}</p>
+        </div>
+        <div class="col-md-6">
+            <p class="lead">Aanmeldcode: {{ attendance.join_code }}</p>
+            <p class="lead">Startdatum: {{ attendance.start_date }}</p>
+            <p class="lead">Einddatum: {{ attendance.end_date }}</p>
+        </div>
+        <div class="col">
+            <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+            <div id="qrcode"></div>
+
+        <!-- Generate the QR code using the current page URL -->
+        <script>
+            var qrcode = new QRCode(document.getElementById("qrcode"), {
+                text: window.location.href,
+                width: 256,
+                height: 256,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        </script>
+    </div>
+</div>
+    </div>
+<div class="container-fluid">
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-5 col-md-6">
+            <h3>Afwezigen</h3>
+            <ul class="list-group afwezig">
+            {% for student in students %}
+                {% if student.first_name == user.first_name and student.last_name == user.last_name %}
+                    <!-- skip this student -->
+                {% else %}
+                    <li class="list-group-item bg-danger text-light {{ student.first_name }}">
+                        <b id="{{ student.student_id }}">{{ student.student_id }}</b> -  {{ student.first_name }} {{ student.last_name }}
+                    </li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
+        <div class="col-lg-5 col-md-6">
+            <h3>Aanwezigen</h3>
+            <ul class="list-group aanwezig">
+                <!-- present student if the clicked on the Mark me as present button -->
+            </ul>
+        </div>
+    {% if user.username.isdigit %}
+        <div class="col-lg-10 col-md-10">
+            <form id="mark-present-form">
+                {% csrf_token %}
+                <button id="mark-present-btn" type="submit" class="btn btn-success w-100 p-4">Mark me as present</button>
+            </form>
+        </div>
+    {% endif %}
+    </div>
+</div>
+<script>
+$(document).ready(function() {
+  // Add an event listener to the "Mark me as present" button
+  $('#mark-present-form').on('submit', function(event) {
+        event.preventDefault();
+
+        // Disable the button to prevent multiple clicks
+        $('#mark-present-btn').prop('disabled', true);
+
+        // Get the current user's ID and the current time
+        var studentId = "{{ user.username }}";
+        var now = new Date();
+        var formattedTime = now.toISOString();
+        var timenow = now.toLocaleTimeString();
+
+        var getId = document.querySelector('b').removeAttribute('ids');
+
+        // Do something with the retrieved value
+        console.log('Student ID: ', getId);
+
+        // Remove the name from the list of absent students
+        $('.afwezig').find('.' + studentId).remove();
+
+        // Add the name and time to the list of present students
+        $('.aanwezig').append('<li class="list-group-item bg-success text-light">' + studentId + ' ' + timenow +'</li>');
+
+        // Send an AJAX request to save the present student to the database
+        $.ajax({
+            type: 'POST',
+            url: '{% url "mark_attendance" %}',
+            data: {
+                'student_id': '{{ student.student_id }}',
+                'attendance_id': '{{ attendance.pk }}',
+                'date_joined': formattedTime,
+                'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(response) {
+                console.log(response);
+            }
+        });
+    });
+});
+
+// Send an AJAX request to save the present student to the database
+/*$.ajax({
+    type: 'GET',
+    url: '{% url "presents" %}',
+    success: function(response) {
+        console.log(response);
+    },
+    error: function(response) {
+        console.log(response);
+    }
+});*/
+</script>
+{% endif %}
+{% endblock content %}

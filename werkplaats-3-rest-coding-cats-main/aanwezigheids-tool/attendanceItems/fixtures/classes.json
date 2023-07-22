@@ -1,0 +1,33 @@
+[
+    {
+    "model": "attendanceItems.Classe",
+    "pk": 1,
+    "fields": {
+      "classe_id": "1A"
+    }
+  },
+  {
+  "model": "attendanceItems.Classe",
+    "pk": 2,
+    "fields":
+  {
+    "classe_id": "1B"
+    }
+  },
+  {
+  "model": "attendanceItems.Classe",
+    "pk": 3,
+    "fields":
+  {
+    "classe_id": "1C"
+    }
+  },
+  {
+  "model": "attendanceItems.Classe",
+    "pk": 4,
+    "fields":
+  {
+    "classe_id": "1D"
+    }
+  }
+]

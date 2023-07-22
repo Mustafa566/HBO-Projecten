@@ -1,0 +1,367 @@
+/* Basic.css  - https://vladocar.github.io/Basic.css/ */
+
+* {
+    box-sizing: border-box
+}
+
+:root {
+    --sans: 1em/1.6 system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Droid Sans, Helvetica Neue, Fira Sans, sans-serif;
+    --mono: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier, 'Courier New', monospace;
+    --c1: #0074d9;
+    --c2: #eee;
+    --c3: #fff;
+    --c4: #000;
+    --c5: #fff;
+    --m1: 8px;
+    --rc: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --c2: #333;
+        --c3: #1e1f20;
+        --c4: #fff;
+    }
+}
+
+html {
+    height: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+
+}
+
+/* General settings */
+
+body {
+    overflow: auto;
+    margin: 0;
+    font: var(--sans);
+    font-weight: 400;
+    font-style: normal;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--c3);
+    color: var(--c4);
+}
+
+img, iframe {
+    border: none;
+    max-width: 100%
+}
+
+a {
+    color: var(--c1);
+    text-decoration: none
+}
+
+a:hover {
+    color: var(--c1);
+    text-decoration: underline
+}
+
+pre {
+    font: 1em/1.6 var(--mono);
+    background: var(--c2);
+    padding: 1em;
+    overflow: auto
+}
+
+code {
+    font: 1em/1.6 var(--mono);
+}
+
+blockquote {
+    border-left: 5px solid var(--c2);
+    padding: 1em 1.5em;
+    margin: 0
+}
+
+hr {
+    border: 0;
+    border-bottom: 1px solid var(--c4)
+}
+
+/* Headlines */
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0.6em 0;
+    font-weight: normal
+}
+
+h1 {
+    font-size: 2.625em;
+    line-height: 1.2
+}
+
+h2 {
+    font-size: 1.625em;
+    line-height: 1.2
+}
+
+h3 {
+    font-size: 1.3125em;
+    line-height: 1.24
+}
+
+h4 {
+    font-size: 1.1875em;
+    line-height: 1.23
+}
+
+h5, h6 {
+    font-size: 1em;
+    font-weight: bold
+}
+
+/* Table */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 1em 0
+}
+
+th, td {
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid;
+    padding: 0.4em
+}
+
+/* Rounded Corners*/
+
+pre, code, input, select, textarea, button, img {
+    border-radius: var(--rc)
+}
+
+
+/* Forms */
+
+input, select, textarea {
+    font-size: 1em;
+    color: var(--c4);
+    background: var(--c2);
+    border: 0;
+    padding: 0.6em
+}
+
+button, input[type=submit], input[type=reset], input[type="button"] {
+    -webkit-appearance: none;
+    font-size: 1em;
+    display: inline-block;
+    color: var(--c5);
+    background: var(--c1);
+    border: 0;
+    margin: 4px;
+    padding: 0.6em;
+    cursor: pointer;
+    text-align: center
+}
+
+button:hover, button:focus, input:hover, textarea:hover, select:hover {
+    opacity: 0.8
+}
+
+/* Infinite Grid */
+
+section {
+    display: flex;
+    flex-flow: row wrap
+}
+
+[style*="--c:"], section > section, aside, article {
+    flex: var(--c, 1);
+    margin: var(--m1)
+}
+
+
+article {
+    background: var(--c2);
+    border-radius: var(--rc);
+    padding: 1em;
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3)
+}
+
+[style*="--c:"]:first-child, section > section:first-child, article:first-child {
+    margin-left: 0
+}
+
+[style*="--c:"]:last-child, section > section:last-child, article:last-child {
+    margin-right: 0
+}
+
+
+section > section {
+    color: #fff;
+    background-color: var(--c1);
+    padding: 15px;
+    margin: 10px 8px 10px 8px;
+    text-align: center;
+}
+
+header {
+    width: 100%;
+    padding: 10px 0;
+    box-shadow: 0 3px 8px 0 rgb(4 31 116 / 30%);
+    min-height: 70px;
+}
+
+header .container-fluid {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1440px;
+    padding: 0 15px;
+}
+
+header .container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    max-width: 200px;
+    object-fit: contain;
+}
+
+header .user {
+    display: flex;
+    gap: 20px;
+}
+
+header .user li a {
+    text-decoration: none;
+}
+header .user li {
+    list-style-type: none;
+}
+
+header .container-fluid nav ul {
+    display: flex;
+    gap: 20px;
+    margin: 0;
+}
+
+header .container-fluid nav ul li {
+    list-style-type: none;
+}
+
+header .container-fluid nav ul li a {
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+main {
+    background: #F0F2F5;
+}
+
+main .content {
+    width: 100%;
+    margin: 0 auto;
+    padding: 50px 100px;
+
+}
+
+main .content .searchBar, .searchBarId {
+    width: 100%;
+    margin: 20px 0;
+    background: #FFFFFF;
+    padding: 12px 8px;
+    border-radius: 5px;
+}
+
+main .content h1 {
+    padding-top: 10px;
+    margin: 0 0 20px 0;
+}
+
+.clock-loader {
+    opacity: 0;
+    --clock-color: rgb(61, 187, 86);
+    --clock-width: 4rem;
+    --clock-radius: calc(var(--clock-width) / 2);
+    --clock-minute-length: calc(var(--clock-width) * 0.4);
+    --clock-hour-length: calc(var(--clock-width) * 0.2);
+    --clock-thickness: 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--clock-width);
+    height: var(--clock-width);
+    border: 3px solid var(--clock-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.clock-loader::before, .clock-loader::after {
+    position: absolute;
+    content: "";
+    top: calc(var(--clock-radius) * 0.25);
+    width: var(--clock-thickness);
+    background: var(--clock-color);
+    border-radius: 10px;
+    transform-origin: center calc(100% - calc(var(--clock-thickness) / 2));
+    animation: spin infinite linear;
+}
+
+.clock-loader::before {
+    height: var(--clock-minute-length);
+    animation-duration: 2s;
+}
+
+.clock-loader::after {
+    top: calc(var(--clock-radius) * 0.25 + var(--clock-hour-length));
+    height: var(--clock-hour-length);
+    animation-duration: 15s;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+
+@media (max-width: 481px) {
+    body {
+        font-size: 18px
+    }
+
+    main, footer {
+        width: 98%
+    }
+
+    section, article {
+        flex: none;
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+
+.showMoreBtn {
+    display: block;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: large;
+}
+
+.flexContainer {
+    display: flex;
+}
+
+.questionIdDiv {
+    width: 20%;
+    margin-right: 20px;
+}
+
+.questionDiv {
+    width: 100%;
+}

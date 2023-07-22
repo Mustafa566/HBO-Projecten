@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block title %}Bijeenkomsten{% endblock title %}
+
+{% block style %}
+<style>
+.attendanceCard {
+    height: 10px;
+    width: 100%;
+}
+
+.joinBtn {
+    text-decoration: none !important;
+    color: white !important;
+}
+</style>
+{% endblock style %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Zoek">
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="1A" id="1A">
+                        <label class="form-check-label" for="1A">
+                            1A
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="1B" id="1B">
+                        <label class="form-check-label" for="1B">
+                            1B
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="1C" id="1C">
+                        <label class="form-check-label" for="1C">
+                            1C
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="1D" id="1D">
+                        <label class="form-check-label" for="1D">
+                            1D
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn redColor textWhite">Filteren</button>
+            </form>
+        </div>
+        <div class="col-md-9">
+            <div class="row" id="attendance-cards">
+                <!-- attendance cards will be added here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Onclick join button of attendance
+    $(document).on('click', '#getData', function(event) {
+        event.preventDefault();
+
+        // Get attendance_id from the data
+        var attendance_id = $(this).data('attendance-id');
+
+        // Url request
+        var urls = '/attendance/' + attendance_id + '/';
+
+        // Change the ahref to urls variable
+        document.getElementById("getData").href = urls;
+        
+        // Show the modal
+        $('#myModal').modal('show');
+        
+        // Set the attendance_id and urls as data attributes for the join button
+        $('#joinBtn').data('attendance-id', attendance_id);
+        $('#joinBtn').data('urls', urls);
+    }); 
+
+    // On click modal join button
+    $(document).on('click', '#joinBtn', function(event) {
+        event.preventDefault();
+
+        // Get the value of the input field
+        var code = $('#modal-code').val();
+
+        // Get the attendance_id and urls from the data attributes
+        var attendance_id = $(this).data('attendance-id');
+        var urls = $(this).data('urls');
+
+        // Make an AJAX request to join the attendance
+        $.ajax({
+            url: urls + '?join_code=' + code,
+            type: 'GET',
+            data: {
+                'attendance_id': attendance_id,
+            },
+            success: function(data) {
+                // Update modal content with success message
+                $('#modal-content').html('<p>Attendance joined successfully!</p>');
+                
+                // Hide the join button
+                $('#joinBtn').hide();
+
+                window.location.href = urls;
+            },            
+            error: function(error) {
+                console.log(error);
+            }
+        });        
+    });
+
+    // Get all attendances and show it to the html page
+    $(document).ready(function() {
+        var end_date = '{{ end_date }}';
+        $.ajax({
+            url: "/attendanceListData/",
+            type: "GET",
+            data: {'end_date': end_date},
+            dataType: "json",
+            success: function(data) {
+                var cardsContainer = $('#attendance-cards');
+                for (var i = 0; i < data.title.length; i++) {
+                    var cardHtml = `
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">${data.title[i]}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">${data.teacher[i]}</h6>
+                                ${data.active[i] ? `<span class="badge text-bg-success">Actief</span>` : `<span class="badge text-bg-danger">Niet actief</span>`}
+                                <p class="card-text">${data.start_date[i]}</p>
+                                <p class="card-text">${data.end_date[i]}</p>
+                                <a href="" id="getData" class="btn redColor textWhite float-right" data-bs-toggle="modal" data-bs-target="#myModal" data-attendance-id="${data.attendance_id[i]}">Aanmelden</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class ="attendanceCard"></div>
+                    
+
+                    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Voer de code in</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form id="joinForm">
+                                    {% csrf_token %}                
+                                    <div class="modal-body">
+                                        <input type="text" class="form-control" id="modal-code" name="code">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuleren</button>
+                                        <button type="submit" id="joinBtn" class="btn redColor textWhite joinBtn"><a href="#" class="nav-link" data-attendance-id="${data.attendance_id[i]}">Aanmelden</a></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>`;
+                    cardsContainer.append(cardHtml);
+                }
+            },
+            error: function(error) {
+                console.error(error);
+            }
+        });
+    });
+</script>
+{% else %}
+    <meta http-equiv="refresh" content="0; URL = http://127.0.0.1:8000/" />
+{% endif %}
+{% endblock content %}

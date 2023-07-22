@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% load render_table from django_tables2 %}
+
+{% block title %}Studententabel{% endblock title %}
+
+{% block style %}
+<style>
+h1, p.subheader {
+    text-align: center;
+}
+
+table {
+    margin: 0 auto;
+    width: 70%;
+}
+
+thead {
+    background-color: #c60031;
+}
+
+th {
+    padding: 10px;
+    text-align: center;
+
+}
+
+th a {
+    color: white;
+    text-decoration: none;
+}
+
+td {
+    text-align: center;
+}
+
+.even {
+    background-color: #dadada;
+}
+
+.odd {
+    background-color: #ffffff;
+}
+
+td {
+    padding: 15px;
+}
+
+{# Pagination styling inspired by #}
+{# https://www.w3schools.com/css/css3_pagination.asp #}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.pagination .previous a {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+
+}
+
+.pagination .next a {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+}
+
+.pagination a {
+    color: #1b1b1b;
+    text-decoration: none;
+    padding: 7px 12px;
+    border: 1px solid #888888;
+}
+
+.pagination a:hover {
+    background-color: rgba(198, 0, 49, 0.29);
+}
+
+.pagination .active a {
+    background-color: #c60031;
+    color: #ffffff;
+    font-weight: bolder;
+}
+
+.pagination .active a:hover {
+    background-color: #c60031;
+}
+
+</style>
+{% endblock style %}
+
+{# Sources:#}
+{# https://openfolder.sh/django-tutorial-as-you-type-search-with-ajax #}
+{# https://www.youtube.com/watch?v=G-Rct7Na0UQ&ab_channel=DennisIvy #}
+
+{% block content %}
+    <h1>Alle studenten</h1>
+    <p class="subheader">Klik op een kolomnaam om alfabetisch te sorteren.</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card card-body">
+                <form id="search-form">
+                    <div class="form-group">
+                    {% csrf_token %}
+                    <label for="id_q">Zoek een student:</label> <br />
+                    <input type="text" class="form-control" id="id_q" name="q" placeholder="Voer nummer of naam in" autofocus>
+                    </div>
+                </form>
+                    <br/>
+                    <p>Of filter op klas:</p>
+                <form id="form-group">
+                    <div class="form-check">
+                        {{ classe_filter.form }}
+                    </div>
+                    <button type="submit" class="btn redColor textWhite">Filter klas</button>
+                    <a href="{% url 'student_db' %}" class="btn btn-secondary">Reset filter</a>
+                </form>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="row" id="table-container">
+                    {% render_table table %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+// Each time a key is released after being pressed inside input id_q, the function is run.
+// The current template will be partially replaced, only within the table-container div.
+// The form values will then get serialized, based on the users input.
+    $(document).ready(function() {
+        $('#id_q').keyup(function() {
+            $('#table-container').load(
+                '{% url "students_filtered" %}',
+                $('#search-form').serialize()
+            );
+        });
+    });
+
+// Reloads the page when the user empties the search bar with backspace.
+    document.getElementById('id_q').addEventListener('keyup', function(event) {
+        if (event.key === 'Backspace' && this.value === '') {
+            location.reload();
+        }
+    });
+</script>
+{% endblock content %}

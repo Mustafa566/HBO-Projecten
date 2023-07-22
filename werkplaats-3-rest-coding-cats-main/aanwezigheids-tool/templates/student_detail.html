@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Studentgegevens</h1>
+    <p>Studentnummer: {{ student.pk }}</p>
+    <p>Voornaam: {{ student.first_name }}</p>
+    <p>Achternaam: {{ student.last_name }}</p>
+    <p>E-mailadres: {{ student.email }}</p>
+    <p>Klas: {{ student.classe }}</p>
+    <p>Projectgroep: {{ student.project_group }}</p>
+    <a href="{% url 'student_db' %}"><button class="btn btn-secondary">Terug</button></a>
+{% endblock content %}

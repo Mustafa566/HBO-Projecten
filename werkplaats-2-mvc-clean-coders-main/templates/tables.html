@@ -1,0 +1,256 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<main class="questions">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Vraag</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Afsluiten</button>
+                    <button type="button" class="btn btn-primary save_btn">Opslaan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- add question Modal -->
+    <div class="modal fade" id="addquestionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Vraag</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" style="display: None" class="rowId" value="@id"/>
+                    <label for="vraag">Vraag</label>
+                    <input style="width: 100%" type="text" class="vraag" id="vraag">
+                    <label for="vraag" class="mt-3">Leerdoel</label>
+                    <select name="" class="leerdoel" id="select_learning" style="display: Block; width: 100%;">
+                        {% for learningobject in learningobjects %}
+                            <option class="learningobjectId"
+                                    value="{{ learningobject[0] }}">{{ learningobject[1] }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="vraag" class="mt-3">Auteur</label>
+                    <select name="" class="auteur" id="select_author" style="display: Block; width: 100%;">
+                        {% for autherobject in autherobjects %}
+                            <option class="learningobjectId"
+                                    value="{{ autherobject[0] }}">{{ autherobject[1] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Afsluiten</button>
+                    <button type="button" class="btn btn-primary create_btn">Opslaan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <div class="clock-loader"></div>
+    <div class="content">
+        <div class="filterDiv">
+            <div style="display: flex; justify-content: space-between; align-items: center" class="top-wrapper">
+                <h1>Alle vragen</h1>
+                <button type="button" data-toggle="modal" data-target="#addquestionModal"
+                        class="btn-modal addQuestion">Vraag toevoegen
+                </button>
+            </div>
+
+            <div class="flexContainer">
+                <div class="questionIdDiv">
+                    <form action="" method="GET">
+                        <input type="text"
+                            class="searchBarId"
+                            name="searchBarId"
+                            placeholder="Vraag nummer">
+                    </form>
+                </div>
+                <div class="questionDiv">
+                    <form action="" method="GET">
+                        <input type="text"
+                            class="searchBar"
+                            name="search"
+                            placeholder="Zoek naar een vraag">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="orgResults">
+
+            <table>
+                <thead>
+                <tr>
+                    {% for column in columns %}
+                        <th>
+                            {{ column |
+                                replace("voornaam", "auteur")
+                            }}
+                        </th>
+                    {% endfor %}
+                    <th>Wijzigen</th>
+                    <th>Verwijderen</th>
+                    <th>Antwoorden</th>
+                </tr>
+
+                </thead>
+                <tbody>
+                {% for row in rows %}
+                    <tr>
+                        {% for field in row %}
+                            <td>
+                                {{ field |
+                                replace("<br>", "") |
+                                replace("<tr>", "") |
+                                replace("</tr>", "") |
+                                replace("<td>", "") |
+                                replace("</td>", "") |
+                                replace("</table>", "") |
+                                replace("&nbsp;", "") |
+                                replace('<td valign="top">', "") |
+                                replace('<table bordercolor="black" cellspacing="0" cellpadding="0" width="75%" border="1">', "") |
+                                replace('<table bordercolor="black" cellspacing="0" cellpadding="0" width="75%" align="center" border="1"></table>', "") |
+                                replace('<table bordercolor="black" cellspacing="0" cellpadding="0" width="75%" align="center" border="1">', "") |
+                                replace('<script>alert("I CANT BELIeve THIS WORKS");</script>', "") }}
+                            </td>
+                        {% endfor %}
+                        <td>
+                            <form action="" method="GET" class="btnModal">
+                                <input class="rowId" type="text" style="display: none" value="{{ row[0] }}">
+
+                                <button type="button" class="updateButton" data-toggle="modal"
+                                        data-target="#exampleModal">Wijzigen
+                                </button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="" method="GET" class="btnDeleteForm" data-id="{{ row[0] }}">
+                                <input class="deleteBtnId" type="text" style="display: none" value="{{ row[0] }}">
+
+                                <button type="button" class="removeButton"
+                                        data-target="#exampleModal">Verwijderen
+                                </button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="" method="GET" class="btnAnswer">
+                                <input class="rowId" type="text" style="display: none" value="{{ row[0] }}">
+
+                                <button type="button" class="btn-success answer answerButton">
+                                    Antwoord
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <button class="showMoreBtn">Meer vragen tonen</button>
+        </div>
+
+        <div id="resultsSearch" style="display:none;">
+            <table>
+                <thead>
+                <tr>
+                    {% for column in columns %}
+                        <th>
+                            {{ column |
+                                replace("voornaam", "auteur")
+                            }}
+                        </th>
+                    {% endfor %}
+                    <th>Wijzigen</th>
+                    <th>Verwijderen</th>
+                    <th>Antwoorden</th>
+                </tr>
+                </thead>
+                <tbody id="results">
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</main>
+
+{% endblock %}
+
+{% block templates %}
+<script id="template">
+    <tr>
+        <tr>
+            <td>
+                @id
+            </td>
+            <td>
+                @leerdoel
+            </td>
+            <td>
+                @vraag
+            </td>
+            <td>
+                @auteur
+            </td>
+            <td>
+                <form action="" method="GET" class="btnModal">
+                    <input class="rowId" type="text" style="display: none" value="@id">
+
+                        <button type="button" class="updateButton" data-toggle="modal" onClick="getQuestionInfo()"
+                                data-target="#exampleModal">Wijzigen
+                        </button>
+                    </input>
+                </form>
+            </td>
+            <td>
+                <form action="" method="GET" class="btnDeleteForm" data-id="@id">
+                    <input class="deleteBtnId" type="text" style="display: none" value="@id">
+
+                        <button type="button" class="removeButton" onClick="deleteQuestion()"
+                                data-target="#exampleModal">Verwijderen
+                        </button>
+                    </input>
+                </form>
+            </td>
+            <td id="answerButtonTd">
+                @antwoord
+            </td>
+        </tr>
+    </tr>
+</script>
+</script>
+
+<script id="getQuestionTemplate">
+    <input type="text" style="display: None" class="rowId" value="@id"/>
+    <label for="vraag">Vraag</label>
+    <textarea style="display:block; width: 100%" name="" class="vraag"  id="" cols="30" rows="10">@vraag</textarea>
+        <label for="vraag" class="mt-3">Leerdoel</label>
+        <select name="" class="my-select" id="select_learning" style="display: Block; width: 100%;">
+            {% for learningobject in learningobjects %}
+                <option class="learningobjectId" value="{{ learningobject[0] }}">{{ learningobject[1] }}</option>
+            {% endfor %}
+        </select>
+        <label for="vraag" class="mt-3">Auteur</label>
+        <select name="" class="my-select" id="select_author" style="display: Block; width: 100%;">
+            {% for autherobject in autherobjects %}
+                <option class="learningobjectId" value="{{ autherobject[0] }}">{{ autherobject[1] }}</option>
+            {% endfor %}
+        </select>
+</script>
+
+{% endblock %}
+

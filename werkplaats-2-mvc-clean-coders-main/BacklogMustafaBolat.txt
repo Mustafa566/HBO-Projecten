@@ -1,0 +1,38 @@
+Branch: removeHtmlTags
+Backlog: Als gebruiker wil ik dat de html-tags worden verwijderen, 
+zodat ik de vraag kan zien zonder de html-code.
+
+
+Branch: convertIdToStr
+Backlog: Als gebruiker wil ik dat de namen van de acteuren op een goede manier wordt benoemd.
+
+
+Branch: answerButton
+Backlog: Wanneer de gebruiker op het antwoord knopje klikt dan verwijst het naar de test-correct.nl 
+website met het antwoord van de vraag.
+
+
+Branch: openAnswerButton
+Backlog: Als gebruiker zien hun 50 vragen en onderin kunnen ze meer vragen inzien als ze het knopje indrukken.
+
+
+Branch: searchQuestionOnId
+Backlog: Wanneer de gebruiker via de zoekbalk van de vraag id opzoekt dan krijgt de gebruiker de juiste vraag 
+nummer tervoorschijn met alle details.
+
+
+Branch: leerdoelAuteurToText
+Backlog: Als gebruiker wil ik dat de voornaam en achternaam van de acteur getoont worden in de vragen.
+
+
+Branch: WebsiteDesign
+Backlog: Als gebruiker wil ik dat de website beter uit ziet. Je kan dan makkelijk navigeren.
+
+
+Branch: ProjectFinal
+Backlog: Als gebruiker wil ik dat alle functies samen worden gemerge, omdat je dan een hele project hebt.
+
+
+Branch: GitFinalProduct
+Backlog: Dit was het final product, we hebben alle losse onderdelen een gehele product kunnen maken,
+Waardoor de klant het hele product kon zien.

@@ -1,0 +1,158 @@
+[
+  {
+    "model": "ccforms.MultipleChoiceQ",
+    "pk": 1,
+    "fields": {
+      "question_text": "Hoe tevreden ben je over de werkomgeving?",
+      "option_a": "Zeer tevreden",
+      "option_b": "Tevreden",
+      "option_c": "Neutraal",
+      "option_d": "Ontevreden",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.MultipleChoiceQ",
+    "pk": 2,
+    "fields": {
+      "question_text": "Hoe zou je de teamcommunicatie beoordelen?",
+      "option_a": "Uitstekend",
+      "option_b": "Goed",
+      "option_c": "Matig",
+      "option_d": "Slecht",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.MultipleChoiceQ",
+    "pk": 3,
+    "fields": {
+      "question_text": "Hoe zou je de werkdruk beoordelen?",
+      "option_a": "Uitstekend",
+      "option_b": "Goed",
+      "option_c": "Matig",
+      "option_d": "Slecht",
+      "is_hidden": false
+    }
+  },
+{
+    "model": "ccforms.MultipleChoiceQ",
+    "pk": 4,
+    "fields": {
+      "question_text": "Hoe tevreden ben je over de bedrijfscultuur?",
+      "option_a": "Zeer tevreden",
+      "option_b": "Tevreden",
+      "option_c": "Neutraal",
+      "option_d": "Ontevreden",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.MultipleChoiceQ",
+    "pk": 5,
+    "fields": {
+      "question_text": "Hoe zou je de leiderschapsstijl binnen het team beoordelen?",
+      "option_a": "Uitstekend",
+      "option_b": "Goed",
+      "option_c": "Matig",
+      "option_d": "Slecht",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.MultipleChoiceQ",
+    "pk": 6,
+    "fields": {
+      "question_text": "Hoe tevreden ben je over de kansen voor professionele ontwikkeling?",
+      "option_a": "Zeer tevreden",
+      "option_b": "Tevreden",
+      "option_c": "Neutraal",
+      "option_d": "Ontevreden",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.MultipleChoiceQ",
+    "pk": 7,
+    "fields": {
+      "question_text": "Hoe zou je de balans tussen werk en privéleven beoordelen?",
+      "option_a": "Uitstekend",
+      "option_b": "Goed",
+      "option_c": "Matig",
+      "option_d": "Slecht",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.MultipleChoiceQ",
+    "pk": 8,
+    "fields": {
+      "question_text": "Hoe tevreden ben je over de communicatie van bedrijfsdoelstellingen?",
+      "option_a": "Zeer tevreden",
+      "option_b": "Tevreden",
+      "option_c": "Neutraal",
+      "option_d": "Ontevreden",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.MultipleChoiceQ",
+    "pk": 9,
+    "fields": {
+      "question_text": "Hoe zou je de samenwerking tussen teams beoordelen?",
+      "option_a": "Uitstekend",
+      "option_b": "Goed",
+      "option_c": "Matig",
+      "option_d": "Slecht",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.MultipleChoiceQ",
+    "pk": 10,
+    "fields": {
+      "question_text": "Hoe tevreden ben je over de beloning en voordelen?",
+      "option_a": "Zeer tevreden",
+      "option_b": "Tevreden",
+      "option_c": "Neutraal",
+      "option_d": "Ontevreden",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.MultipleChoiceQ",
+    "pk": 11,
+    "fields": {
+      "question_text": "Hoe zou je de innovatiecultuur binnen het bedrijf beoordelen?",
+      "option_a": "Uitstekend",
+      "option_b": "Goed",
+      "option_c": "Matig",
+      "option_d": "Slecht",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.MultipleChoiceQ",
+    "pk": 12,
+    "fields": {
+      "question_text": "Hoe tevreden ben je over de werkomstandigheden?",
+      "option_a": "Zeer tevreden",
+      "option_b": "Tevreden",
+      "option_c": "Neutraal",
+      "option_d": "Ontevreden",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "ccforms.MultipleChoiceQ",
+    "pk": 13,
+    "fields": {
+      "question_text": "Hoe zou je de teamdynamiek en samenwerking beoordelen?",
+      "option_a": "Uitstekend",
+      "option_b": "Goed",
+      "option_c": "Matig",
+      "option_d": "Slecht",
+      "is_hidden": false
+    }
+  }
+]

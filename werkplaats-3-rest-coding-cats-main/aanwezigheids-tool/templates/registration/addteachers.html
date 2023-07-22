@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Docent toevoegen{% endblock title %}
+
+{% block style %}
+<style>
+form {
+    width: 70% !important;
+    margin: 0 auto !important;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+      
+.form-group input[type="checkbox"] {
+    transform: scale(1.5);
+    margin-top: 0.5rem;
+}
+    
+.form-group input[type="datetime-local"] {
+    height: 3rem;
+}
+
+.textCenter {
+    text-align: center;
+}
+</style>
+{% endblock style %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <div class="container">
+        <h2 class="textCenter">Docent toevoegen</h2>
+        <form method="post">{% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" value="Toevoegen"/>
+        </form>
+    </div>
+{% else %}
+    <meta http-equiv="refresh" content="0; URL = http://127.0.0.1:8000/" />
+{% endif %}
+{% endblock content %}

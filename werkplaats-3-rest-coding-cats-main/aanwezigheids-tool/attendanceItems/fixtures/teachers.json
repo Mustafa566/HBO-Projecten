@@ -1,0 +1,83 @@
+[
+  {
+    "model": "attendanceItems.Teacher",
+    "pk": 1,
+    "fields": {
+      "last_name": "Otting",
+      "first_name": "Mark",
+      "email": "m.b.otting@hr.nl"
+    }
+  },
+  {
+    "model": "attendanceItems.Teacher",
+    "pk": 2,
+    "fields": {
+      "last_name": "Maijer",
+      "first_name": "Tjidde",
+      "email": "t.mayer@hr.nl"
+    }
+  },
+  {
+    "model": "attendanceItems.Teacher",
+    "pk": 3,
+    "fields": {
+      "last_name": "de Vries",
+      "first_name": "Diederik",
+      "email": "d.de.vries@hr.nl"
+    }
+  },
+  {
+    "model": "attendanceItems.Teacher",
+    "pk": 4,
+    "fields": {
+      "last_name": "van der Loo",
+      "first_name": "Jelle",
+      "email": "j.v.van.der.loo@hr.nl"
+    }
+  },
+  {
+    "model": "attendanceItems.Teacher",
+    "pk": 5,
+    "fields": {
+      "last_name": "Altinok",
+      "first_name": "Veysel",
+      "email": "v.k.altinok@hr.nl"
+    }
+  },
+  {
+    "model": "attendanceItems.Teacher",
+    "pk": 6,
+    "fields": {
+      "last_name": "Goyal",
+      "first_name": "Gayatri",
+      "email": "g.goyal@hr.nl"
+    }
+  },
+  {
+    "model": "attendanceItems.Teacher",
+    "pk": 7,
+    "fields": {
+      "last_name": "Schaap",
+      "first_name": "Eva",
+      "email": "e.schaap@hr.nl"
+    }
+  },
+  {
+    "model": "attendanceItems.Teacher",
+    "pk": 8,
+    "fields": {
+      "last_name": "Mol",
+      "first_name": "Dana",
+      "email": "d.c.mol@hr.nl"
+    }
+  },
+  {
+    "model": "attendanceItems.Teacher",
+    "pk": 9,
+    "fields": {
+      "last_name": "'t Sas",
+      "first_name": "Sander",
+      "email": "v.a.r.'t.sas@hr.nl"
+    }
+  }
+]

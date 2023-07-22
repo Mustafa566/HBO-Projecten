@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+
+    <style>
+        .agenda_change_position {
+            text-align: left;
+        }
+        .agenda-header {
+            display: inline-block;
+            margin-left: 100px;
+        }
+        #calendar {
+            max-width: 90%;
+            margin: 0 auto;
+        }
+    </style>
+
+    <div class="agenda_change_position">
+        <h1 class="agenda-header">Agenda</h1>
+        <div id="calendar"></div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#calendar').fullCalendar({
+                contentHeight: 650,
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                events: [
+                    {% for attendance in class_attendance %}
+                        {
+                            title: "{{ attendance.title }}",
+                            start: "{{ attendance.start_date|date:'Y-m-d' }}T{{ attendance.start_date|time:'H:i:s' }}",
+                            end: "{{ attendance.end_date|date:'Y-m-d' }}T{{ attendance.end_date|time:'H:i:s' }}",
+                            
+                        },
+                    {% endfor %}
+                ],
+            });
+        });
+    </script>
+{% endblock %}

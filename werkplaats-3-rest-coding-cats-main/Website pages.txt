@@ -1,0 +1,22 @@
+## Pagina wat we nodig hebben
+**Bijeenkomsten pagina**
+Laat alle bijeenkomsten in een lijst zien. In elk bijeenkomst sectie staat de klas, datum, titel en een knop met een join tekst erop.
+
+**Joining pagina**
+Wanneer je op een bijeenkomst klikt dan kom je op een pagina waar je de code moet invoeren van de session. En als je op enter drukt of je klikt op de button ga je daarna naar de aanwezigheids pagina.
+
+**Aanwezigheids pagina**
+Wanneer je de juiste code hebt ingevoerd dan kom je in de aanwezigheids pagina. 
+
+**Les aanmaken pagina**
+Je kan hier de lessen inplannen met de naam van de les, start datum, eindatum met tijd.
+
+**Les geschiedenis pagina**
+Je ziet een lijst met aantal gemaakte lessen en wanneer je op een knop klikt voor meer informatie dan opent op dezelfde pagina een detail panel welke student aanwezig was en wie niet.
+
+**Student log pagina**
+Je ziet alle gegevens van de student en alle aanwezigheids sessies waar hij/zij uitgenodigd was en ook op de website worden getoont.
+Je moet studenten kunnen filteren op naam, klas, studentnummer.
+
+**Dashboard pagina**
+In de dashboard kun je klassen en studenten aanmaken misschien ook docenten aanmaken. Wanneer je de studenten aanmaakt kan je de klassen ook aangeven in welke klas ze horen.

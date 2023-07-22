@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block style %}
+    <style>
+    .container {
+        margin: 50px;
+    }
+    </style>
+{% endblock style %}
+
+{% block content %}
+    <div class="container">
+    <h2>Bevestig</h2>
+    <p><b>{{ student.first_name }} {{ student.last_name }} ({{ student.pk }})</b> verwijderen uit de database?</p>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Doorgaan" class="btn redColor textWhite">
+        <a href="{% url 'student_db' %}" class="btn btn-secondary">Annuleren</a>
+    </form>
+    </div>
+{% endblock %}

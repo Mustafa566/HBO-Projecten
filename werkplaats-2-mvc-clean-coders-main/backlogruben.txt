@@ -1,0 +1,31 @@
+Push name: Geboortejaar filter toegevoegd
+- backlog
+
+casus: Redacteuren willen alle rijen zien waarvan een kolom tussen bepaalde waardes
+valt. Soms willen redacteuren een set vragen verder onderzoeken in bijvoorbeeld
+Excel. Daarvoor willen ze eerst een ruwe selectie maken om te voorkomen dat men
+met miljoenen rijen moet werken. Dus bijvoorbeeld alles uit de tabel met vragen
+waarin de kolom datum_invoer tussen tijdstip A en tijdstip B valt. Of alles uit de
+tabel met auteurs met een geboortedatum van 1990 tot nu.
+
+Wanneer er geklikt word op de button filtert hij alle auteurs na 1990.
+
+
+Push name: Vraag toevoeg functie gemaakt in aparte branch
+casus: De tabel “vragen” bevat vraagitems uit de database.
+Omdat test-correct een heleboelantwoordtypes kent die een ander type opslag hebben zijn deze weggelaten.
+De kolommendie overblijven:-“Id” is een unieke waarde.
+Dit “id” is hetzelfde als het id van de vraag in detest-correct database, mocht er een verwijzing nodig zijn.
+-“leerdoel” is een verwijzing naar de tabel met leerdoelen. Één leerdoel kan dus aanmeerdere vragen gekoppeld zijn, maar elke vraag heeft maar één leerdoel.
+-“vraag” bevat de vraag in platte tekst, zonder bijzondere opmaak.-“auteur” is een verwijzing naar de tabel met vraag auteurs.
+ Een vraag kan dus nietmeerdere auteurs hebben.
+
+Bovenaan de pagina staat vraag toevoegen knop dat de vraag toevoegd.
+
+
+
+
+Push name: Auteur verwijder functie toegevoegd
+Casus: (feedback na presentatie)
+
+Door op de verwijder knop te klikken op de auteur pagina word een auteur verwijdert.

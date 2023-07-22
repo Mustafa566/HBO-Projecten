@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block style %}
+    <style>
+    .container {
+        margin-left: 50px;
+    }
+    </style>
+{% endblock style %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Studentgegevens wijzigen</h1>
+    <div class="col-md-4">
+        <div class="card card-body">
+            <form id="search-form" method="post">
+                <div class="form-check">
+                    {% csrf_token %}
+                    <table>
+                        {{ form.as_table }}
+                    </table>
+                </div>
+                <button type="submit" class="btn redColor textWhite">Opslaan</button>
+                <a href="{% url 'student_db' %}" class="btn btn-secondary">Terug</a>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

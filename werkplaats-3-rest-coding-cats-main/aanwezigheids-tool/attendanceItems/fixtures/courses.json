@@ -1,0 +1,83 @@
+[
+  {
+    "model": "attendanceItems.Course",
+    "pk": 1,
+    "fields": {
+      "course_id": "SWDPRO21X1",
+      "course_name": "Professionele Vorming 2",
+      "elective": false
+    }
+  },
+  {
+    "model": "attendanceItems.Course",
+    "pk": 2,
+    "fields": {
+      "course_id": "SWDWIS01X1",
+      "course_name": "Basis Wiskunde",
+      "elective": false
+    }
+  },
+  {
+    "model": "attendanceItems.Course",
+    "pk": 3,
+    "fields": {
+      "course_id": "SWDUXP01X1",
+      "course_name": "User Experience",
+      "elective": false
+    }
+  },
+  {
+    "model": "attendanceItems.Course",
+    "pk": 4,
+    "fields": {
+      "course_id": "SWDDAT01X1",
+      "course_name": "Databases",
+      "elective": false
+    }
+  },
+  {
+    "model": "attendanceItems.Course",
+    "pk": 5,
+    "fields": {
+      "course_id": "SWDWER31X1",
+      "course_name": "Werkplaats 3",
+      "elective": false
+    }
+  },
+  {
+    "model": "attendanceItems.Course",
+    "pk": 6,
+    "fields": {
+      "course_id": "SWDOPS01X1",
+      "course_name": "Ops voor Operating Systems",
+      "elective": false
+    }
+  },
+  {
+    "model": "attendanceItems.Course",
+    "pk": 7,
+    "fields": {
+      "course_id": "SWDOND01X1",
+      "course_name": "Onderzoek",
+      "elective": false
+    }
+  },
+  {
+    "model": "attendanceItems.Course",
+    "pk": 8,
+    "fields": {
+      "course_id": "SWDWER41X1",
+      "course_name": "Werkplaats 4",
+      "elective": false
+    }
+  },
+  {
+    "model": "attendanceItems.Course",
+    "pk": 9,
+    "fields": {
+      "course_id": "SWDSLC11X1",
+      "course_name": "Studieloopbaancoaching",
+      "elective": false
+    }
+  }
+]
